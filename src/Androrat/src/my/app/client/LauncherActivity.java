@@ -27,6 +27,9 @@ public class LauncherActivity extends Activity {
         ipfield = (EditText) findViewById(R.id.ipfield);
         portfield = (EditText) findViewById(R.id.portfield);
         
+        ipfield.setText(Config.ip);
+        portfield.setText(String.valueOf(Config.port));
+        
         btnStart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
             	Client.putExtra("IP", ipfield.getText().toString());
