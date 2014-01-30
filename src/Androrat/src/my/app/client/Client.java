@@ -4,29 +4,22 @@ package my.app.client;
 import inout.Controler;
 import inout.Protocol;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.StringTokenizer;
-import java.util.prefs.Preferences;
 
-import out.Connection;
-
-
-import my.app.Library.CallMonitor;
 import my.app.Library.SystemInfo;
-
-import Packet.*;
+import out.Connection;
+import Packet.CommandPacket;
+import Packet.LogPacket;
+import Packet.PreferencePacket;
+import Packet.TransportPacket;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.location.Address;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.widget.Toast;
 
 public class Client extends ClientListener implements Controler {
 

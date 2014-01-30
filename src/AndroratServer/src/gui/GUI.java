@@ -1,60 +1,63 @@
 package gui;
 
+import gui.panel.ColorPane;
 import inout.Protocol;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+
 import javax.imageio.ImageIO;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane; 
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
-
-import Packet.AdvancedInformationPacket;
-import Packet.CallPacket;
-import Packet.PreferencePacket;
-import Packet.SMSPacket;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import server.Server;
 import utils.Contact;
 import utils.EncoderHelper;
 import utils.MyFile;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
-import javax.swing.JSplitPane;
-import gui.panel.ColorPane;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableCellEditor;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.Dimension;
-import java.awt.Font;
+import Packet.AdvancedInformationPacket;
+import Packet.CallPacket;
+import Packet.PreferencePacket;
+import Packet.SMSPacket;
 
 public class GUI extends javax.swing.JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JMenuItem buttonRemoveUser;
 	private JMenuItem buttonUserGUI;
     private JMenuItem buttonExit;
@@ -96,16 +99,21 @@ public class GUI extends javax.swing.JFrame {
         		(new Date(System.currentTimeMillis()))+"\n" + 
         		"On port : "+ port +"\n");
         
+        try {
+			logPanel.append(Color.blue, "Adresse Ip:"+InetAddress.getLocalHost().getHostAddress()+"\n");
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
         centrerTable(userTable);
         
-        this.setLocationRelativeTo(null);
-        this.setTitle("Androrat Project");
-        this.setVisible(true);
+        setLocationRelativeTo(null);
+        setTitle("Androrat Project");
+        setVisible(true);
     }
     
     
     // *******************************
-    //	M�thodes du log gui
+    //	Méthodes du log gui
     // *******************************
     
     public void logErrTxt(String txt) {
@@ -237,6 +245,11 @@ public class GUI extends javax.swing.JFrame {
     
 	public class MyRenderer extends DefaultTableCellRenderer
 	{
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 		{
